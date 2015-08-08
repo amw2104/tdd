@@ -31,7 +31,7 @@ def _get_latest_source(source_folder):
 
 def _update_settings(source_folder, site_name):
     settings_path = source_folder + '/superlists/settings.py'
-    sed(settings_path, "DEBUG=True", "DEBUG=False", use_sudo=True)
+    sed(settings_path, "DEBUG = True", "DEBUG = False", use_sudo=True)
     sed(settings_path, 'ALLOWED_HOSTS =.+$', 'ALLOWED_HOSTS = ["%s"]' % (site_name,), use_sudo=True)
     secret_key_file = source_folder + '/superlists/secret_key.py'
     if not exists(secret_key_file):
